@@ -1,5 +1,5 @@
-import base.GenerateUsers;
 import base.Constants;
+import base.GenerateUsers;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
@@ -16,12 +16,12 @@ import java.time.Duration;
 @DisplayName("Проверка авторизации")
 public class AuthorizationTest {
     private WebDriver driver;
-    Constants constants;
-    RegistrationPage registration;
-    AuthorizationPage authorizationPage;
-    RecoveryPasswordPage recoveryPasswordPage;
-    HomePage homePage;
-    GenerateUsers users;
+    private Constants constants;
+    private RegistrationPage registration;
+    private AuthorizationPage authorizationPage;
+    private RecoveryPasswordPage recoveryPasswordPage;
+    private HomePage homePage;
+    private GenerateUsers users;
     private String email;
     private String Password;
 
@@ -47,6 +47,7 @@ public class AuthorizationTest {
         registration.enterPassword(Password);
         registration.clickButtonRegistration();
     }
+
     @Test
     @DisplayName("Проверка входа через личный кабинет")
     public void checkLoginPersonalAccount() {
@@ -57,6 +58,7 @@ public class AuthorizationTest {
         authorizationPage.clickButtonLogin();
         homePage.checkingAccountLogin();
     }
+
     @Test
     @DisplayName("Проверка входа через главную страницу")
     public void checkLoginButtonHomePage() {
@@ -67,6 +69,7 @@ public class AuthorizationTest {
         authorizationPage.clickButtonLogin();
         homePage.checkingAccountLogin();
     }
+
     @Test
     @DisplayName("Проверка входа через форму регистрации")
     public void checkLoginRegistration() {
@@ -77,6 +80,7 @@ public class AuthorizationTest {
         authorizationPage.clickButtonLogin();
         homePage.checkingAccountLogin();
     }
+
     @Test
     @DisplayName("Проверка входа через форму восстановления пароля")
     public void checkLoginRecoveryPassword() {
@@ -87,6 +91,7 @@ public class AuthorizationTest {
         authorizationPage.clickButtonLogin();
         homePage.checkingAccountLogin();
     }
+
     @After
     public void closeBrowser() {
         driver.quit();

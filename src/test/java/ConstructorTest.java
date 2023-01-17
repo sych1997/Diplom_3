@@ -12,8 +12,8 @@ import java.time.Duration;
 @DisplayName("Проверка переходов по разделам")
 public class ConstructorTest {
     private WebDriver driver;
-    HomePage homePage;
-    Constants constants;
+    private HomePage homePage;
+    private Constants constants;
 
     @Before
     public void beginning() {
@@ -27,6 +27,7 @@ public class ConstructorTest {
         constants = new Constants(driver);
         constants.openPage(constants.getHomeUrl());
     }
+
     @Test
     @DisplayName("Проверка перехода в раздел булки")
     public void transitionBuns() {
@@ -34,18 +35,21 @@ public class ConstructorTest {
         homePage.clickSectionBun();
         homePage.checkSectionBun();
     }
+
     @Test
     @DisplayName("Проверка перехода в раздел соусы")
     public void transitionSauce() {
         homePage.clickSectionSauce();
         homePage.checkSectionSauce();
     }
+
     @Test
     @DisplayName("Проверка перехода в раздел начинки")
     public void transitionFilling() {
         homePage.clickSectionFilling();
         homePage.checkSectionFilling();
     }
+
     @After
     public void closeBrowser() {
         driver.quit();

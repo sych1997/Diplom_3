@@ -6,19 +6,22 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pom.*;
+import pom.AuthorizationPage;
+import pom.HomePage;
+import pom.PersonalAccountPage;
+import pom.RegistrationPage;
 
 import java.time.Duration;
 
 @DisplayName("Проверка связанные с личным кабинетом")
 public class PersonalAccountTest {
     private WebDriver driver;
-    Constants constants;
-    RegistrationPage registration;
-    AuthorizationPage authorizationPage;
-    HomePage homePage;
-    PersonalAccountPage personalAccountPage;
-    GenerateUsers users;
+    private Constants constants;
+    private RegistrationPage registration;
+    private AuthorizationPage authorizationPage;
+    private HomePage homePage;
+    private PersonalAccountPage personalAccountPage;
+    private GenerateUsers users;
     private String email;
     private String Password;
 
@@ -48,12 +51,14 @@ public class PersonalAccountTest {
         authorizationPage.enterPassword(Password);
         authorizationPage.clickButtonLogin();
     }
+
     @Test
     @DisplayName("Проверка перехода в личный кабинет")
     public void transitionPersonalAccount() {
         homePage.signPersonalAccount();
         personalAccountPage.checkingButtonProfile();
     }
+
     @Test
     @DisplayName("Проверка перехода в конструктор через кнопку конструктор")
     public void transitionConstructor() {
@@ -61,6 +66,7 @@ public class PersonalAccountTest {
         personalAccountPage.clickButtonConstructor();
         homePage.checkingAccountLogin();
     }
+
     @Test
     @DisplayName("Проверка перехода в конструктор через логотип")
     public void transitionStellarBurgers() {
@@ -68,6 +74,7 @@ public class PersonalAccountTest {
         personalAccountPage.clickButtonStellarBurgers();
         homePage.checkingAccountLogin();
     }
+
     @Test
     @DisplayName("Проверка выхода из аккаунта")
     public void exitingAccount() {
@@ -76,6 +83,7 @@ public class PersonalAccountTest {
         constants.openPage(constants.getHomeUrl());
         homePage.checkingExitingAccount();
     }
+
     @After
     public void closeBrowser() {
         driver.quit();

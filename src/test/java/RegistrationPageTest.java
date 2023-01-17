@@ -1,5 +1,5 @@
-import base.GenerateUsers;
 import base.Constants;
+import base.GenerateUsers;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
@@ -13,9 +13,9 @@ import java.time.Duration;
 @DisplayName("Проверка входа")
 public class RegistrationPageTest {
     private WebDriver driver;
-    Constants constants;
-    RegistrationPage registration;
-    GenerateUsers users;
+    private Constants constants;
+    private RegistrationPage registration;
+    private GenerateUsers users;
     private String name;
     private String email;
 
@@ -34,6 +34,7 @@ public class RegistrationPageTest {
         email = users.cretedEmail();
         constants.openPage(constants.getRegistrationUrl());
     }
+
     @Test
     @DisplayName("Проверка регистрации с валидным паролем")
     public void checkingRegistrationWithValidPassword() {
@@ -43,6 +44,7 @@ public class RegistrationPageTest {
         registration.clickButtonRegistration();
         registration.checkingSuccessfulRegistration();
     }
+
     @Test
     @DisplayName("Проверка регистрации с не валидным паролем")
     public void checkingRegistrationWithNotValidPassword() {
@@ -52,6 +54,7 @@ public class RegistrationPageTest {
         registration.clickButtonRegistration();
         registration.checkingUnsuccessfulRegistration();
     }
+
     @After
     public void closeBrowser() {
         driver.quit();
